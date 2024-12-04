@@ -1,5 +1,12 @@
 package com.mysite.sbb;
 
+import lombok.RequiredArgsConstructor;
+import lombok.Getter;
+import lombok.Setter;
+
+@RequiredArgsConstructor
+@Getter
+@Setter
 public class HelloLombok {
     private String hello;
     private int lombok;
