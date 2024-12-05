@@ -95,7 +95,7 @@ class SbbApplicationTests {
 		this.questionRepository.save(q);
 		Optional<Question> oq2 = this.questionRepository.findById(1);
 		Question q2 = oq2.get();
-		assertEquals("sbb가 무엇인가요?", q2.getSubject());
+		assertEquals("수정된 제목", q2.getSubject());
 	}
 
 	@Test
