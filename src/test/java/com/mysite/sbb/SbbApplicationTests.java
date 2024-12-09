@@ -5,6 +5,7 @@ import com.mysite.sbb.answer.AnswerContentAndCreateDateById;
 import com.mysite.sbb.answer.AnswerRepository;
 import com.mysite.sbb.question.Question;
 import com.mysite.sbb.question.QuestionRepository;
+import com.mysite.sbb.question.QuestionService;
 import com.mysite.sbb.question.QuestionSubjectAndContent;
 import lombok.extern.log4j.Log4j2;
 import org.junit.jupiter.api.Disabled;
@@ -30,6 +31,9 @@ class SbbApplicationTests {
 
 	@Autowired
 	private AnswerRepository answerRepository;
+
+	@Autowired
+	private QuestionService questionService;
 
 	@Disabled("초기 데이터 삽입을 위한 테스트")
 	@Test
@@ -168,6 +172,16 @@ class SbbApplicationTests {
 
 			assertEquals("네 자동으로 생성됩니다.", content);
 			assertEquals(ldt1, createDate);
+		}
+	}
+
+	@Disabled("테스트 데이터 삽입")
+	@Test
+	void testQuestionCreateData() {
+		for (int i = 1; i <= 300; i++) {
+			String subject = String.format("테스트 데이터입니다:[%03d]", i);
+			String content = "내용무";
+			this.questionService.create(subject, content);
 		}
 	}
 
