@@ -1,0 +1,46 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<mapper namespace="com.mysite.sbb.question.ArticleDAO">
+    <insert id="insertArticle">
+        insert into ARTICLEDTO (no, name, title, content, password)
+        values (s_article.nextval, #{name}, #{title}, #{content}, #{password} )
+    </insert>
+
+    <select id="getArticleList" resultType="ArticleDTO">
+        SELECT no
+                ,title
+                ,name
+                ,regdate
+                ,readcount
+        FROM ARTICLEDTO
+        ORDER BY no DESC
+    </select>
+
+    <select id="getDetail" resultType="ArticleDTO">
+        SELECT no
+                ,title
+                ,name
+                ,regdate
+                ,readcount
+                ,content
+        FROM ARTICLEDTO
+        WHERE no=#{no}
+    </select>
+
+    <delete id="deleteArticle">
+        DELETE ARTICLEDTO
+   WHERE  no=#{no}
+        AND    password=#{password}
+    </delete>
+
+    <update id="updateArticle">
+        update ARTICLEDTO set
+            name   =#{name}
+                         ,title  =#{title}
+                         ,content=#{content}
+        where no=#{no} and password=#{password}
+    </update>
+
+</mapper>
