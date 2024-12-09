@@ -7,6 +7,7 @@ import com.mysite.sbb.question.Question;
 import com.mysite.sbb.question.QuestionRepository;
 import com.mysite.sbb.question.QuestionService;
 import com.mysite.sbb.question.QuestionSubjectAndContent;
+import com.mysite.sbb.user.SiteUser;
 import lombok.extern.log4j.Log4j2;
 import org.junit.jupiter.api.Disabled;
 import org.junit.jupiter.api.Test;
@@ -178,10 +179,12 @@ class SbbApplicationTests {
 	@Disabled("테스트 데이터 삽입")
 	@Test
 	void testQuestionCreateData() {
+		SiteUser siteUser = new SiteUser();
+		siteUser.setId(21L);
 		for (int i = 1; i <= 300; i++) {
 			String subject = String.format("테스트 데이터입니다:[%03d]", i);
 			String content = "내용무";
-			this.questionService.create(subject, content);
+			this.questionService.create(subject, content, siteUser);
 		}
 	}
 
